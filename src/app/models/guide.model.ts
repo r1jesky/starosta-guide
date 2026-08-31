@@ -157,6 +157,8 @@ export interface GuideSection {
 
 export type GlyphName =
   | 'book'
+  | 'check'
+  | 'pause'
   | 'pulse'
   | 'coin'
   | 'door'

@@ -31,6 +31,15 @@ import { GlyphName } from '../../models/guide.model';
           <path d="M4 5.5h6a2 2 0 0 1 2 2v11a2 2 0 0 0-2-2H4z" />
           <path d="M20 5.5h-6a2 2 0 0 0-2 2v11a2 2 0 0 1 2-2h6z" />
         }
+        @case ('check') {
+          <path d="M8.5 4.5h7a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2z" />
+          <path d="M9.5 3.2h5v2.6h-5z" />
+          <path d="M9.8 13.4l1.9 1.9 3.5-4" />
+        }
+        @case ('pause') {
+          <circle cx="12" cy="12" r="8" />
+          <path d="M10.2 9.4v5.2M13.8 9.4v5.2" />
+        }
         @case ('pulse') {
           <rect x="3.5" y="4.5" width="17" height="15" rx="3" />
           <path d="M6.5 12h3l1.5-3 2 6 1.5-3h3" />
