@@ -1,0 +1,186 @@
+<div class="page">
+  <header class="head">
+    <span class="head__mark">
+      <app-glyph class="head__glyph" [name]="section().glyph" />
+    </span>
+    <div class="head__text">
+      <p class="eyebrow">Раздел {{ number() }}</p>
+      <h2 class="head__title">{{ section().title }}</h2>
+    </div>
+  </header>
+
+  <div class="body">
+    @for (block of section().blocks; track $index) {
+      @switch (block.kind) {
+        @case ('lead') {
+          <p class="lead">{{ block.text }}</p>
+        }
+
+        @case ('text') {
+          <p class="text">{{ block.text }}</p>
+        }
+
+        @case ('list') {
+          @if (block.ordered) {
+            <ol class="list list--ordered">
+              @for (item of block.items; track $index) {
+                <li>{{ item }}</li>
+              }
+            </ol>
+          } @else {
+            <ul class="list">
+              @for (item of block.items; track $index) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
+        }
+
+        @case ('steps') {
+          <ol class="steps">
+            @for (step of block.items; track $index) {
+              <li class="step">
+                <span class="step__num">{{ $index + 1 }}</span>
+                <span class="step__body">
+                  <span class="step__title">{{ step.title }}</span>
+                  @if (step.note) {
+                    <span class="step__note">{{ step.note }}</span>
+                  }
+                </span>
+              </li>
+            }
+          </ol>
+        }
+
+        @case ('defs') {
+          <dl class="defs">
+            @for (item of block.items; track $index) {
+              <div class="defs__item">
+                <dt class="defs__term">{{ item.term }}</dt>
+                <dd class="defs__text">{{ item.text }}</dd>
+              </div>
+            }
+          </dl>
+        }
+
+        @case ('table') {
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  @for (cell of block.head; track $index) {
+                    <th scope="col">{{ cell }}</th>
+                  }
+                </tr>
+              </thead>
+              <tbody>
+                @for (row of block.rows; track $index) {
+                  @if (row.group) {
+                    <tr class="table__group">
+                      <th [attr.colspan]="block.head.length" scope="colgroup">{{ row.group }}</th>
+                    </tr>
+                  } @else {
+                    <tr>
+                      @for (cell of row.cells ?? []; track $index) {
+                        <td [attr.data-label]="block.head[$index]">{{ cell }}</td>
+                      }
+                    </tr>
+                  }
+                }
+              </tbody>
+            </table>
+          </div>
+          @if (block.note) {
+            <p class="table-note">{{ block.note }}</p>
+          }
+        }
+
+        @case ('cards') {
+          <ul class="cards">
+            @for (card of block.items; track $index) {
+              <li class="card">
+                <h3 class="card__title">{{ card.title }}</h3>
+                @if (card.subtitle) {
+                  <p class="card__subtitle">{{ card.subtitle }}</p>
+                }
+                <dl class="card__lines">
+                  @for (line of card.lines; track $index) {
+                    <div class="card__line">
+                      <dt>{{ line.label }}</dt>
+                      <dd>
+                        @if (line.href) {
+                          <a [href]="line.href">{{ line.value }}</a>
+                        } @else {
+                          {{ line.value }}
+                        }
+                      </dd>
+                    </div>
+                  }
+                </dl>
+              </li>
+            }
+          </ul>
+        }
+
+        @case ('gallery') {
+          <div class="gallery" [class.gallery--two]="block.columns === 2">
+            @for (figure of block.items; track $index) {
+              <figure class="figure">
+                <img [src]="figure.src" [alt]="figure.alt" loading="lazy" decoding="async" />
+                @if (figure.caption) {
+                  <figcaption>{{ figure.caption }}</figcaption>
+                }
+              </figure>
+            }
+          </div>
+        }
+
+        @case ('callout') {
+          <aside class="callout" [class.callout--warn]="block.tone === 'warn'">
+            @if (block.title) {
+              <p class="callout__title">{{ block.title }}</p>
+            }
+            <p class="callout__text">{{ block.text }}</p>
+          </aside>
+        }
+
+        @case ('links') {
+          <ul class="links">
+            @for (link of block.items; track $index) {
+              <li>
+                <a class="link" [href]="link.href" target="_blank" rel="noopener noreferrer">
+                  <span class="link__label">{{ link.label }}</span>
+                  @if (link.note) {
+                    <span class="link__note">{{ link.note }}</span>
+                  }
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="link__icon">
+                    <path d="M8 16 16 8M9.5 8H16v6.5" />
+                  </svg>
+                </a>
+              </li>
+            }
+          </ul>
+        }
+
+        @case ('tags') {
+          <ul class="tags">
+            @for (tag of block.items; track $index) {
+              <li class="tag">{{ tag }}</li>
+            }
+          </ul>
+        }
+
+        @case ('timeline') {
+          <ol class="timeline">
+            @for (item of block.items; track $index) {
+              <li class="timeline__item">
+                <span class="timeline__year">{{ item.year }}</span>
+                <span class="timeline__text">{{ item.text }}</span>
+              </li>
+            }
+          </ol>
+        }
+      }
+    }
+  </div>
+</div>

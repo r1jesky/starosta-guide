@@ -1,0 +1,82 @@
+<div class="page hero__inner">
+  <div class="hero__text">
+    <p class="eyebrow">Совет старост Самарского университета</p>
+
+    <h1 class="hero__title">
+      Памятка<br />
+      <span class="hero__title-accent">первокурсника</span>
+    </h1>
+
+    <p class="hero__lead">
+      Всё, что обычно узнаёшь методом проб и ошибок к концу первого семестра: чем семинар
+      отличается от практики, что делать с больничным, какие бывают стипендии, за какой дверью
+      сидит нужный отдел и как не потеряться между двумя площадками.
+    </p>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#map">
+        Открыть разделы
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="btn__icon">
+          <path d="M12 5v14M6 13l6 6 6-6" />
+        </svg>
+      </a>
+
+      <button type="button" class="btn btn--ghost" (click)="searchOpen.emit()">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="btn__icon">
+          <circle cx="11" cy="11" r="6.5" />
+          <path d="m16 16 4 4" />
+        </svg>
+        Найти по слову
+      </button>
+    </div>
+
+    <dl class="facts">
+      <div class="facts__item">
+        <dt>Разделов</dt>
+        <dd>{{ sectionCount() }}</dd>
+      </div>
+      <div class="facts__item">
+        <dt>Площадки</dt>
+        <dd>2</dd>
+      </div>
+      <div class="facts__item">
+        <dt>Объединений</dt>
+        <dd>100+</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="hero__art" aria-hidden="true">
+    <svg viewBox="0 0 320 320" class="art">
+      <defs>
+        <linearGradient id="heroFade" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="var(--blue-soft)" />
+          <stop offset="100%" stop-color="var(--green-soft)" />
+        </linearGradient>
+      </defs>
+
+      <rect x="42" y="42" width="180" height="180" rx="26" fill="url(#heroFade)" opacity="0.55" />
+      <rect
+        x="92"
+        y="92"
+        width="180"
+        height="180"
+        rx="26"
+        fill="none"
+        stroke="var(--blue)"
+        stroke-width="1.4"
+      />
+      <circle cx="232" cy="88" r="34" fill="var(--cream)" stroke="var(--border-strong)" stroke-width="1.2" />
+      <circle cx="88" cy="232" r="22" fill="var(--green-pale)" stroke="var(--green)" stroke-width="1.2" />
+      <path d="M42 232h60M232 42v60" stroke="var(--blue)" stroke-width="1.4" stroke-linecap="round" />
+      <path
+        d="M132 158l22 22 44-52"
+        fill="none"
+        stroke="var(--accent)"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+</div>

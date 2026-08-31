@@ -1,0 +1,29 @@
+<div class="grid-backdrop" aria-hidden="true"></div>
+
+<a class="skip" href="#map">Перейти к содержанию</a>
+
+<span id="top"></span>
+
+<app-site-header
+  [sections]="sections"
+  [activeId]="activeId()"
+  (searchOpen)="searchOpen.set(true)"
+/>
+
+<main class="shell">
+  <app-hero [sectionCount]="sections.length" (searchOpen)="searchOpen.set(true)" />
+
+  <section id="map" class="anchor">
+    <app-section-nav [sections]="sections" />
+  </section>
+
+  @for (section of sections; track section.id; let i = $index) {
+    <section #sectionAnchor [id]="section.id" class="anchor">
+      <app-guide-section [section]="section" [index]="i" />
+    </section>
+  }
+</main>
+
+<app-site-footer />
+
+<app-search-panel [open]="searchOpen()" (closed)="searchOpen.set(false)" />

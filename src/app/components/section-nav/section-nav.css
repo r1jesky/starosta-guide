@@ -1,0 +1,92 @@
+:host {
+  display: block;
+  padding-block: 26px 12px;
+}
+
+.head {
+  max-width: 60ch;
+  margin-bottom: 26px;
+}
+
+.head__title {
+  margin-top: 8px;
+  font-size: clamp(24px, 3.4vw, 32px);
+}
+
+.head__note {
+  margin-top: 10px;
+  color: var(--ink-2);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 18px 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  color: inherit;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.tile:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow);
+}
+
+.tile__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tile__glyph {
+  width: 34px;
+  height: 34px;
+  padding: 6px;
+  border-radius: var(--radius-s);
+  background: var(--blue-pale);
+  color: var(--accent);
+}
+
+.tiles__item:nth-child(3n) .tile__glyph {
+  background: var(--green-pale);
+  color: var(--green);
+}
+
+.tiles__item:nth-child(3n + 2) .tile__glyph {
+  background: var(--cream);
+  color: var(--accent-2);
+}
+
+.tile__num {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.tile__title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.tile__teaser {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}

@@ -1,0 +1,25 @@
+<div class="page">
+  <header class="head">
+    <p class="eyebrow">Содержание</p>
+    <h2 class="head__title">С чего начать</h2>
+    <p class="head__note">
+      Разделы независимы — читай подряд или сразу открывай нужный. Ссылки работают как обычные
+      якоря, их можно отправлять однокурсникам.
+    </p>
+  </header>
+
+  <ul class="tiles">
+    @for (section of sections(); track section.id; let i = $index) {
+      <li class="tiles__item">
+        <a class="tile" [href]="'#' + section.id">
+          <span class="tile__top">
+            <app-glyph class="tile__glyph" [name]="section.glyph" />
+            <span class="tile__num">{{ numberOf(i) }}</span>
+          </span>
+          <span class="tile__title">{{ section.title }}</span>
+          <span class="tile__teaser">{{ section.teaser }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</div>

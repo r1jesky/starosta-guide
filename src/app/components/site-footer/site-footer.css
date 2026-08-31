@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  margin-top: 40px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 36px;
+  padding-block: 40px 28px;
+}
+
+.foot__logo {
+  height: 38px;
+  width: auto;
+}
+
+.foot__note {
+  margin-top: 16px;
+  max-width: 52ch;
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+
+.foot__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14.5px;
+}
+
+.foot__links .eyebrow {
+  margin-bottom: 4px;
+}
+
+.foot__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 16px 26px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 720px) {
+  .foot {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+}

@@ -1,0 +1,196 @@
+/* ==========================================================================
+   Памятка первокурсника — глобальные стили и палитра.
+   Тема переключается атрибутом data-theme на <html> (см. ThemeService).
+   ========================================================================== */
+
+:root {
+  /* Поверхности */
+  --bg: #fdfdfc;
+  --bg-tint: #f6f7f3;
+  --surface: #ffffff;
+  --surface-2: #f6f7f3;
+  --cream: #fff9ef;
+
+  /* Линии */
+  --border: #e2e9f0;
+  --border-strong: #c7d9ed;
+
+  /* Текст */
+  --ink: #1b2733;
+  --ink-2: #4e5d6b;
+  --ink-3: #7a8794;
+
+  /* Палитра */
+  --blue: #97acc9;
+  --blue-soft: #c7d9ed;
+  --blue-pale: #eaf1f8;
+  --green: #8ba888;
+  --green-soft: #c0cfb2;
+  --green-pale: #ecf2e3;
+
+  /* Акценты (из логотипа Совета старост) */
+  --accent: #1f6fd0;
+  --accent-2: #5b2be0;
+  --accent-ink: #ffffff;
+  --highlight: #fdf0b8;
+
+  /* Геометрия */
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+  --shadow: 0 1px 2px rgba(27, 39, 51, 0.04), 0 8px 24px rgba(27, 39, 51, 0.05);
+  --shadow-lift: 0 2px 4px rgba(27, 39, 51, 0.06), 0 18px 40px rgba(27, 39, 51, 0.1);
+
+  /* Сетка */
+  --page: 1080px;
+  --gutter: 24px;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #10161c;
+  --bg-tint: #141c23;
+  --surface: #18212a;
+  --surface-2: #1d2731;
+  --cream: #221d15;
+
+  --border: #27333e;
+  --border-strong: #38495a;
+
+  --ink: #e8eef4;
+  --ink-2: #adbccb;
+  --ink-3: #7f8e9c;
+
+  --blue: #7fa2c8;
+  --blue-soft: #2c3f54;
+  --blue-pale: #1a2532;
+  --green: #8ba888;
+  --green-soft: #2d3d2e;
+  --green-pale: #1a2420;
+
+  --accent: #74b4f7;
+  --accent-2: #a68cff;
+  --accent-ink: #10161c;
+  --highlight: #4a4324;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 18px 40px rgba(0, 0, 0, 0.4);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* чтобы якорь не уезжал под липкую шапку */
+  scroll-padding-top: 118px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- общие раскладочные помощники ---------------------------------------- */
+
+.page {
+  width: 100%;
+  max-width: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Тонкая геометрическая сетка — общий фон страницы. */
+.grid-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 0%, transparent 75%);
+}

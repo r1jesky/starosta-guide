@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  position: relative;
+  isolation: isolate;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+}
+
+.anchor {
+  scroll-margin-top: 118px;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 90;
+  padding: 10px 16px;
+  border-radius: var(--radius-s);
+  background: var(--ink);
+  color: var(--bg);
+  border: 0;
+  transition: top 0.15s ease;
+}
+
+.skip:focus-visible {
+  top: 12px;
+}
