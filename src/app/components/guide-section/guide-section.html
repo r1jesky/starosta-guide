@@ -126,7 +126,14 @@
           <div class="gallery" [class.gallery--two]="block.columns === 2">
             @for (figure of block.items; track $index) {
               <figure class="figure">
-                <img [src]="figure.src" [alt]="figure.alt" loading="lazy" decoding="async" />
+                <img
+                  [src]="figure.src"
+                  [alt]="figure.alt"
+                  [attr.width]="figure.width"
+                  [attr.height]="figure.height"
+                  loading="lazy"
+                  decoding="async"
+                />
                 @if (figure.caption) {
                   <figcaption>{{ figure.caption }}</figcaption>
                 }

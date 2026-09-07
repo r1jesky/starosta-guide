@@ -35,6 +35,8 @@ export class App implements AfterViewInit, OnDestroy {
   private observer?: IntersectionObserver;
 
   ngAfterViewInit(): void {
+    this.jumpToHash();
+
     if (typeof IntersectionObserver === 'undefined') {
       return;
     }
@@ -60,6 +62,27 @@ export class App implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer?.disconnect();
+  }
+
+  /**
+   * Ссылка вида .../#money открывается сразу на нужном разделе. Прокрутку
+   * приходится повторить после полной загрузки: карты кампуса подгружаются
+   * лениво и сдвигают вёрстку уже после первого перехода.
+   */
+  private jumpToHash(): void {
+    const id = decodeURIComponent(location.hash.replace('#', ''));
+    if (!id) {
+      return;
+    }
+
+    const jump = () => document.getElementById(id)?.scrollIntoView({ behavior: 'auto' });
+
+    jump();
+    if (document.readyState === 'complete') {
+      setTimeout(jump, 60);
+    } else {
+      window.addEventListener('load', () => setTimeout(jump, 60), { once: true });
+    }
   }
 
   onKeydown(event: KeyboardEvent): void {
