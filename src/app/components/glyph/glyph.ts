@@ -40,6 +40,11 @@ import { GlyphName } from '../../models/guide.model';
           <circle cx="12" cy="12" r="8" />
           <path d="M10.2 9.4v5.2M13.8 9.4v5.2" />
         }
+        @case ('lifebuoy') {
+          <circle cx="12" cy="12" r="8" />
+          <circle cx="12" cy="12" r="3.5" />
+          <path d="M6.3 6.3l3.2 3.2M17.7 6.3l-3.2 3.2M6.3 17.7l3.2-3.2M17.7 17.7l-3.2-3.2" />
+        }
         @case ('pulse') {
           <rect x="3.5" y="4.5" width="17" height="15" rx="3" />
           <path d="M6.5 12h3l1.5-3 2 6 1.5-3h3" />

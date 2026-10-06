@@ -27,7 +27,12 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "outputPath": {
+              "base": "dist/starosta-guide",
+              "browser": "browser",
+              "media": "fonts"
+            }
           },
           "configurations": {
             "production": {

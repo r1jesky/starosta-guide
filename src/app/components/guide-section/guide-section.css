@@ -390,7 +390,7 @@
 .timeline__item {
   position: relative;
   display: grid;
-  grid-template-columns: 82px minmax(0, 1fr);
+  grid-template-columns: 96px minmax(0, 1fr);
   gap: 16px;
 }
 
@@ -408,6 +408,7 @@
 }
 
 .timeline__year {
+  white-space: nowrap;
   font-weight: 650;
   font-variant-numeric: tabular-nums;
   color: var(--accent);

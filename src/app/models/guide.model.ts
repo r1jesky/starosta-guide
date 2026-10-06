@@ -166,6 +166,7 @@ export type GlyphName =
   | 'book'
   | 'check'
   | 'pause'
+  | 'lifebuoy'
   | 'pulse'
   | 'coin'
   | 'door'

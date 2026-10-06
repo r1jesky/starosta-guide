@@ -38,11 +38,49 @@
 </div>
 
 <nav class="rail" aria-label="Разделы памятки">
-  <div class="page rail__inner">
-    @for (section of sections(); track section.id) {
-      <a class="chip" [class.chip--active]="activeId() === section.id" [href]="'#' + section.id">
-        {{ section.title }}
-      </a>
+  <div class="page rail__frame">
+    @if (canScrollLeft()) {
+      <button
+        type="button"
+        class="rail__arrow rail__arrow--left"
+        tabindex="-1"
+        aria-label="Прокрутить разделы влево"
+        (click)="scrollRail(-1)"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6" /></svg>
+      </button>
+    }
+
+    <div
+      #rail
+      class="rail__inner"
+      [class.rail__inner--fade-left]="canScrollLeft()"
+      [class.rail__inner--fade-right]="canScrollRight()"
+      (scroll)="updateArrows()"
+      (wheel)="onWheel($event)"
+    >
+      @for (section of sections(); track section.id) {
+        <a
+          class="chip"
+          [class.chip--active]="activeId() === section.id"
+          [attr.data-section]="section.id"
+          [href]="'#' + section.id"
+        >
+          {{ section.title }}
+        </a>
+      }
+    </div>
+
+    @if (canScrollRight()) {
+      <button
+        type="button"
+        class="rail__arrow rail__arrow--right"
+        tabindex="-1"
+        aria-label="Прокрутить разделы вправо"
+        (click)="scrollRail(1)"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" /></svg>
+      </button>
     }
   </div>
 </nav>
